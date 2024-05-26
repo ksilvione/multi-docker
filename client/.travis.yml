@@ -13,3 +13,9 @@ after_success:
   - docker build -t ksilvione/multi-nginx ./nginx
   - docker build -t ksilvione/multi-server ./server
   - docker build -t ksilvione/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push ksilvione/multi-client
+  - docker push ksilvione/multi-nginx
+  - docker push ksilvione/multi-server
+  - docker push ksilvione/multi-worker
+  
